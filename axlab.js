@@ -1,4 +1,4 @@
-var dataP.json("gradeData.json.txt")
+var dataP = d3.json("gradeData.json.txt")
 
 dataP.then(function(data){
   console.log("data",data);
