@@ -24,13 +24,18 @@ var drawGraph = function(data,width,height,idName){
     right: 20
   }
 
+  var newWidth = width - margins.left - margins.right;
+  var newHeight = height - margins.top - margins.bottom;
+  var startWidth = margins.left + margins.right;
+  var startHeight = margins.top + margins.bottom;
+
   var xScale = d3.scaleLinear()
                  .domain([0,20])
-                 .range([0,width]);
+                 .range([startWidth,newWidth]);
 
   var yScale = d3.scaleLinear()
                  .domain([0,100])
-                 .range([0,height]);
+                 .range([startHeight,newHeight]);
 
   var plotLand = svg.append("g")
                     .classed("plot",true);
