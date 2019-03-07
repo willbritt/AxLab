@@ -26,16 +26,17 @@ var drawGraph = function(data,width,height,idName){
                  .range([0,height]);
 
   var plotLand = svg.append("g")
-                    .classed("plot",true)
+                    .classed("plot",true);
 
   var students = plotLand.selectAll("g")
                          .data(data)
                          .enter()
-                         .append("g")
+                         .append("g");
 
   students.selectAll("circle")
           .data(function(d){return d.grades})
           .enter()
+          .append("circle")
           .attr("cx", function(d,i){return xScale(i)})
           .attr("cy", function(d){return yScale(d)})
           .attr("r",10);
