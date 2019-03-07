@@ -18,7 +18,7 @@ var drawGraph = function(data,width,height,idName){
               .attr("height",height);
 
   var margins = {
-    top: 20,
+    top:20,
     bottom: 20,
     left: 20,
     right: 20
