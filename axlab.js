@@ -2,9 +2,9 @@ var dataP = d3.json("gradeData.json.txt")
 
 dataP.then(function(data){
   console.log("data",data);
-  drawGraph(data,400,400,"#svg1");
-  drawGraph(data,600,400,"#svg2");
-  drawGraph(data,800,400,"#svg3");
+  drawGraph(data,600,400,"#svg1");
+  drawGraph(data,800,400,"#svg2");
+  drawGraph(data,1000,400,"#svg3");
 },
 function(err){
   console.log(err);
@@ -31,11 +31,13 @@ var drawGraph = function(data,width,height,idName){
 
   var xScale = d3.scaleLinear()
                  .domain([0,20])
-                 .range([startWidth,newWidth]);
+                 .range([margins.left,(width-margins.right)]);
 
   var yScale = d3.scaleLinear()
                  .domain([0,100])
-                 .range([startHeight,newHeight]);
+                 .range([margins.top,height-margins.top]);
+
+  var colors = d3.scaleOrdinal(d3.schemeAccent);
 
   var plotLand = svg.append("g")
                     .classed("plot",true);
@@ -43,7 +45,8 @@ var drawGraph = function(data,width,height,idName){
   var students = plotLand.selectAll("g")
                          .data(data)
                          .enter()
-                         .append("g");
+                         .append("g")
+                         .attr("fill",function(d){return colors(d.name)});
 
   students.selectAll("circle")
           .data(function(d){return d.grades})
