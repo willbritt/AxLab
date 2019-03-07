@@ -17,6 +17,13 @@ var drawGraph = function(data,width,height,idName){
               .attr("width",width)
               .attr("height",height);
 
+  var margins = {
+    top = 20,
+    bottom = 20,
+    left = 20,
+    right =20:
+  }
+
   var xScale = d3.scaleLinear()
                  .domain([0,20])
                  .range([0,width]);
@@ -39,6 +46,6 @@ var drawGraph = function(data,width,height,idName){
           .append("circle")
           .attr("cx", function(d,i){return xScale(i)})
           .attr("cy", function(d){return yScale(d)})
-          .attr("r",10);
+          .attr("r",5);
 
 }
