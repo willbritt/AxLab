@@ -2,9 +2,9 @@ var dataP = d3.json("gradeData.json.txt")
 
 dataP.then(function(data){
   console.log("data",data);
-  drawGraph(data,200,200,"#svg1");
-  drawGraph(data,400,400,"#svg2");
-  drawGraph(data,600,600,"#svg3");
+  drawGraph(data,400,400,"#svg1");
+  drawGraph(data,600,400,"#svg2");
+  drawGraph(data,800,400,"#svg3");
 },
 function(err){
   console.log(err);
