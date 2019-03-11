@@ -5,6 +5,7 @@ dataP.then(function(data){
   drawGraph(data,600,400,"#svg1");
   drawGraph(data,800,450,"#svg2");
   drawGraph(data,1000,500,"#svg3");
+  drawLegend(dataName, "#svg1Key");
 },
 function(err){
   console.log(err);
@@ -70,5 +71,39 @@ var drawGraph = function(data,width,height,idName){
   .attr("class","axis")
   .attr("transform","translate(" + (20) + ", 0)")
   .call(yAxis);
+
+  var drawLegend = function(data, idname)
+{
+  var width = 200;
+  var height = 200;
+  var boxWidth = 15;
+  var svg = d3.select(idname)
+              .attr("height", height)
+              .attr("width", width);
+  svg.selectAll("rect")
+     .data(data)
+     .enter()
+     .append("rect")
+     .attr("x", function(d,i)
+      { return 25;})
+    .attr("y", function (d, i)
+      { return (i+1)*15 + 10;})
+    .attr("width", boxWidth)
+    .attr("height", boxWidth-3)
+    .attr("fill", function(d)
+      { return blue;})
+
+svg.selectAll("text")
+   .data(data)
+   .enter()
+   .append("text")
+   .text(function(d)
+      { return d.name;})
+   .attr("x", function(d,i)
+      { return 45})
+   .attr("y", function(d, i)
+      { return (i+1)*15 + 22;})
+   .attr("fill", "black")
+}
 
 }
