@@ -19,7 +19,7 @@ var drawGraph = function(data,width,height,idName){
 
   var margins = {
     top:20,
-    bottom: 20,
+    bottom: 40,
     left: 20,
     right: 20
   }
@@ -60,7 +60,7 @@ var drawGraph = function(data,width,height,idName){
                 .scale(xScale);
 
   svg.append("g")
-     .attr("transform","translate(0," + (height - margins.bottom) + ")")
+     .attr("transform","translate(0," + (height - 20) + ")")
      .call(xAxis);
 
 }
