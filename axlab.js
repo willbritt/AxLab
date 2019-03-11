@@ -56,4 +56,11 @@ var drawGraph = function(data,width,height,idName){
           .attr("cy", function(d){return yScale(d)})
           .attr("r",5);
 
+  var xAxis = d3.axisBottom()
+                .scale(xScale);
+
+  svg.append("g")
+     .attr("transform","translate(0," + (height - margins.bottom) + ")")
+     .call(xAxis);
+
 }
