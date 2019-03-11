@@ -63,4 +63,12 @@ var drawGraph = function(data,width,height,idName){
      .attr("transform","translate(0," + (height - 20) + ")")
      .call(xAxis);
 
+  var yAxis = d3.axisLeft()
+    .scale(yScale);
+
+ svg.append("g")
+  .attr("class","axis")
+  .attr("transform","translate(" + (20) + ", 0)")
+  .call(yAxis);
+
 }
