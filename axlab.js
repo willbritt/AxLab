@@ -8,6 +8,8 @@ dataP.then(function(data){
   drawGraph(data,800,450,"#svg2");
   drawGraph(data,1000,500,"#svg3");
   drawLegend(data, "#svg1Key");
+  drawLegend(data, "#svg2Key");
+  drawLegend(data, "#svg3Key");
 },
 function(err){
   console.log(err);
@@ -66,6 +68,12 @@ var drawGraph = function(data,width,height,idName){
      .attr("transform","translate(0," + (height - 20) + ")")
      .call(xAxis);
 
+   svg.append("text")
+         .attr("transform","translate(" + (newWidth/2) + " ," + (height) + ")")
+         .text("Exam Number");
+
+
+
   var yAxis = d3.axisLeft()
     .scale(yScale);
 
@@ -74,6 +82,11 @@ var drawGraph = function(data,width,height,idName){
   .attr("transform","translate(" + (20) + ", 0)")
   .call(yAxis);
 
+  svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 + margins.left)
+    .attr("x",0 - ((newHeight/ 2) + 40))
+    .text("Grade");
 }
 
 var drawLegend = function(data, idname)
