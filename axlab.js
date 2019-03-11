@@ -1,11 +1,13 @@
 var dataP = d3.json("gradeData.json.txt")
 
+var colors = d3.scaleOrdinal(d3.schemeAccent);
+
 dataP.then(function(data){
   console.log("data",data);
   drawGraph(data,600,400,"#svg1");
   drawGraph(data,800,450,"#svg2");
   drawGraph(data,1000,500,"#svg3");
-  drawLegend(dataName, "#svg1Key");
+  drawLegend(data, "#svg1Key");
 },
 function(err){
   console.log(err);
@@ -38,7 +40,7 @@ var drawGraph = function(data,width,height,idName){
                  .domain([0,100])
                  .range([height-margins.top,margins.top]);
 
-  var colors = d3.scaleOrdinal(d3.schemeAccent);
+  // var colors = d3.scaleOrdinal(d3.schemeAccent);
 
   var plotLand = svg.append("g")
                     .classed("plot",true);
@@ -72,7 +74,9 @@ var drawGraph = function(data,width,height,idName){
   .attr("transform","translate(" + (20) + ", 0)")
   .call(yAxis);
 
-  var drawLegend = function(data, idname)
+}
+
+var drawLegend = function(data, idname)
 {
   var width = 200;
   var height = 200;
@@ -91,7 +95,7 @@ var drawGraph = function(data,width,height,idName){
     .attr("width", boxWidth)
     .attr("height", boxWidth-3)
     .attr("fill", function(d)
-      { return blue;})
+      { return colors(d.name);})
 
 svg.selectAll("text")
    .data(data)
@@ -104,6 +108,4 @@ svg.selectAll("text")
    .attr("y", function(d, i)
       { return (i+1)*15 + 22;})
    .attr("fill", "black")
-}
-
 }
