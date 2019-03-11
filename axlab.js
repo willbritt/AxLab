@@ -3,8 +3,8 @@ var dataP = d3.json("gradeData.json.txt")
 dataP.then(function(data){
   console.log("data",data);
   drawGraph(data,600,400,"#svg1");
-  drawGraph(data,800,400,"#svg2");
-  drawGraph(data,1000,400,"#svg3");
+  drawGraph(data,800,450,"#svg2");
+  drawGraph(data,1000,500,"#svg3");
 },
 function(err){
   console.log(err);
