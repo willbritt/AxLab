@@ -19,7 +19,7 @@ var drawGraph = function(data,width,height,idName){
 
   var margins = {
     top:20,
-    bottom: 40,
+    bottom: 20,
     left: 20,
     right: 20
   }
@@ -35,7 +35,7 @@ var drawGraph = function(data,width,height,idName){
 
   var yScale = d3.scaleLinear()
                  .domain([0,100])
-                 .range([margins.top,height-margins.top]);
+                 .range([height-margins.top,margins.top]);
 
   var colors = d3.scaleOrdinal(d3.schemeAccent);
 
